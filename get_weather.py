@@ -1,6 +1,4 @@
-import pandas as pd
 import requests
-import json
 
 
 def get_weather_data(lat, long, start_date, end_date):
@@ -16,7 +14,7 @@ def get_weather_data(lat, long, start_date, end_date):
             "hourly": ["wind_speed_10m"]
             }
         
-        response = requests.get(url=url,params=params)
+        response = requests.get(url=url, params=params, timeout=30)
 
         response.raise_for_status()  # Raise an error for bad responses
         data = response.json()
